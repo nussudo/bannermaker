@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Banner Maker</title>
+<title>Simple PNG Banner Maker</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&family=Kanit:wght@400;700&family=Prompt:wght@400;700&family=Mitr:wght@400;700&family=Noto+Sans+Thai:wght@400;700&family=Pacifico&family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -36,7 +36,8 @@ body{margin:0;height:100vh;display:flex;font-family:Arial,sans-serif;font-size:1
 </head>
 <body>
 <div id="panel">
-  <h3>Canvas</h3>
+  <h2 style="margin:0 0 4px;font-size:17px">Simple PNG Banner Maker</h2>
+  <h3>Presets</h3>
   <select id="preset">
     <option value="">Custom</option>
     <optgroup label="Square">
@@ -115,6 +116,11 @@ body{margin:0;height:100vh;display:flex;font-family:Arial,sans-serif;font-size:1
   <div class="row"><button id="save">Save project</button><button id="load">Load project</button></div>
   <input id="pfile" type="file" accept=".json" hidden>
   <p style="color:#888;font-size:11px">Double-click text to edit on canvas. Drag the blue dot (bottom-right) to resize: images keep their ratio, text boxes change width. Drop PNG files anywhere to add them.</p>
+  <div style="margin-top:18px;padding-top:12px;border-top:1px solid #333;text-align:left;font-size:12px">
+    <img src="niruth-transparent.png" alt="niruth" style="width:80px;height:auto;display:block;margin-bottom:6px">
+    <a href="https://x.com/nusdunda" target="_blank" rel="noopener" style="color:#6cb2ff">Follow on X</a>
+    <div style="margin-top:6px;color:#999">Open source: <a href="https://github.com/nussudo/bannermaker" target="_blank" rel="noopener" style="color:#6cb2ff">github.com/nussudo/bannermaker</a></div>
+  </div>
 </div>
 <div id="area"><div id="wrap"><div id="stage"></div></div></div>
 <div id="drop">Drop image here</div>
