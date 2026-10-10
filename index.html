@@ -112,6 +112,8 @@ body{margin:0;height:100vh;display:flex;font-family:Arial,sans-serif;font-size:1
 
   <h3>Output</h3>
   <button id="newImg">📄 New Image</button>
+  <label>Export to filename</label>
+  <input id="fname" type="text" spellcheck="false">
   <button class="primary" id="export">Export PNG</button>
   <div class="row"><button id="save">Save project</button><button id="load">Load project</button></div>
   <input id="pfile" type="file" accept=".json" hidden>
@@ -375,13 +377,20 @@ $('export').onclick = async () => {
     ctx.restore();
   }
   c.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b);
-    a.download = `banner_${W}x${H}.png`; a.click(); }, 'image/png');
+    let name = $('fname').value.trim().replace(/[\\/:*?"<>|]/g,'_') || newFileName();
+    if(!/\.png$/i.test(name)) name += '.png';
+    a.download = name; a.click(); }, 'image/png');
 };
 
+function newFileName(){
+  const d = new Date(), z = n => String(n).padStart(2,'0');
+  return `export_${d.getFullYear()}${z(d.getMonth()+1)}${z(d.getDate())}${z(d.getHours())}${z(d.getMinutes())}${z(d.getSeconds())}.png`;
+}
+$('fname').value = newFileName();
 $('newImg').onclick = () => {
   if(!confirm('Create a new image? Everything on the canvas will be lost (unless you saved the project).')) return;
   items.forEach(i=>i.el.remove()); items = []; select(null);
-  $('bg').value = '#ffffff'; $('tp').checked = false; bgUpdate();
+  $('bg').value = '#ffffff'; $('tp').checked = false; bgUpdate(); $('fname').value = newFileName();
 };
 
 // ---- save / load ----
